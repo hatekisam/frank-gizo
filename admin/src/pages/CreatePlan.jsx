@@ -280,7 +280,7 @@ const CreatePlan = () => {
 							<p className="text-red-500">{errors.description?.message}</p>
 						</div>
 						<div className="my-2">
-							<p>Upload visual elements:</p>
+							<p>Upload visual elements: <span>{"(<10mb)"}</span> </p>
 
 							<div className="flex flex-col gap-1">
 								<p>Project Images</p>

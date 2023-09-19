@@ -1,8 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Switch from "react-switch";
+import Modal from "react-modal"
 import { fetchOneProject } from "../services/project.service";
 import { FadeLoader } from "react-spinners";
 const OnePlan = () => {
@@ -55,8 +56,60 @@ const OnePlan = () => {
       },
     ],
   };
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+  const deleteProject = () => {
+    setLoading(true)
+    try {
+      api.delete(`/projects/${project?._id}`).then((res) => {
+        toast.success("Successfully deleted project")
+        setLoading(false)
+        navigate("/plans")
+      })
+    } catch (error) {
+      setLoading(false)
+      toast.error("Error while deleting project")
+    }
+  }
+  const [modalIsOpen, setIsOpen] = React.useState(false);
   return (
     <div className="w-full h-full overflow-y-auto overflow-x-hidden p-5">
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <p className="text-red-500 text-3xl">Delete Plan</p>
+        <p className="text-gray-500">Are you sure you want to delete this project</p>
+        <div className="flex justify-between my-3">
+          <button onClick={() => {
+            setIsOpen(false)
+          }} className='px-4 py-2 rounded-md bg-gray-200 border-blue-500 border-2 text-white'>Cancel</button>
+          <button onClick={deleteProject} className='px-4 py-2 rounded-md bg-red-500 text-white'>Delete</button>
+        </div>
+      </Modal>
       <div className="my-2">
         <div className="p-3 border-b-2 flex items-center justify-between">
           <p className="text-[#2D2D2D]  font-bold ">Plans</p>
@@ -93,22 +146,24 @@ const OnePlan = () => {
               className="w-[60%] rounded-lg"
             />
             <div className="flex gap-3 justify-center w-[40%]">
-              <button className="flex gap-2 items-center border-2 rounded-lg h-fit px-4 py-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                >
-                  <path
-                    d="M12.8667 5.95016L10.0333 3.15016L10.9667 2.21683C11.2222 1.96127 11.5362 1.8335 11.9087 1.8335C12.2807 1.8335 12.5944 1.96127 12.85 2.21683L13.7833 3.15016C14.0389 3.40572 14.1722 3.71416 14.1833 4.0755C14.1944 4.43638 14.0722 4.74461 13.8167 5.00016L12.8667 5.95016ZM11.9 6.9335L4.83333 14.0002H2V11.1668L9.06667 4.10016L11.9 6.9335Z"
-                    fill="#555555"
-                  />
-                </svg>
-                <p>Edit</p>
-              </button>
-              <button className="flex gap-2 items-center border-2 rounded-lg h-fit px-4 py-2">
+              <Link to={`/plans/${project._id}/edit`}>
+                <div className="flex gap-2 items-center border-2 rounded-lg h-fit px-4 py-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                  >
+                    <path
+                      d="M12.8667 5.95016L10.0333 3.15016L10.9667 2.21683C11.2222 1.96127 11.5362 1.8335 11.9087 1.8335C12.2807 1.8335 12.5944 1.96127 12.85 2.21683L13.7833 3.15016C14.0389 3.40572 14.1722 3.71416 14.1833 4.0755C14.1944 4.43638 14.0722 4.74461 13.8167 5.00016L12.8667 5.95016ZM11.9 6.9335L4.83333 14.0002H2V11.1668L9.06667 4.10016L11.9 6.9335Z"
+                      fill="#555555"
+                    />
+                  </svg>
+                  <p>Edit</p>
+                </div>
+              </Link>
+              <button onClick={openModal} className="flex gap-2 items-center border-2 rounded-lg h-fit px-4 py-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"

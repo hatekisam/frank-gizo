@@ -34,33 +34,36 @@ router.get("/", getAllProjects);
 router.get("/:id", getProject);
 
 
-router.delete("/:id", async (req, res, next) => {
-	// Get the token from the Authorization header
-	const authHeader = req.headers['Authorization'];
-	console.log(authHeader)
-	if (!authHeader) {
-		return res.status(401).json({ message: 'Authorization header is missing' });
-	}
+router.delete("/:id"
+// , 
+// async (req, res, next) => {
+// 	// Get the token from the Authorization header
+// 	const authHeader = req.headers['Authorization'];
+// 	console.log(authHeader)
+// 	if (!authHeader) {
+// 		return res.status(401).json({ message: 'Authorization header is missing' });
+// 	}
 
-	const token = authHeader.split(' ')[1]; // Assuming it's in the format 'Bearer <token>'
-	console.log(token);
-	if (!token) {
-		return res.status(401).json({ message: 'Token is missing in Authorization header' });
-	}
+// 	const token = authHeader.split(' ')[1]; // Assuming it's in the format 'Bearer <token>'
+// 	console.log(token);
+// 	if (!token) {
+// 		return res.status(401).json({ message: 'Token is missing in Authorization header' });
+// 	}
 
-	try {
-		const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
-		const userId = decodedToken.userId;
-		const user = await User.findById(userId);
-		if (!user) {
-			return res.status(401).json({ message: 'User not found' });
-		}
-		req.user = user;
-		next();
-	} catch (err) {
-		return res.status(401).json({ message: 'Invalid token' });
-	}
-}, checkRole(["ADMIN"]), deleteProject);
+// 	try {
+// 		const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
+// 		const userId = decodedToken.userId;
+// 		const user = await User.findById(userId);
+// 		if (!user) {
+// 			return res.status(401).json({ message: 'User not found' });
+// 		}
+// 		req.user = user;
+// 		next();
+// 	} catch (err) {
+// 		return res.status(401).json({ message: 'Invalid token' });
+// 	}
+// }, checkRole(["ADMIN"])
+, deleteProject);
 
 
 router.patch(

@@ -51,10 +51,12 @@ const Dashboard = () => {
         console.log(res)
         toast.success("Successfully deleted project")
         setINLoading(false)
+        closeModal()
       })
     } catch (error) {
       console.log(error)
       setINLoading(false)
+      closeModal()
       toast.error("Error while deleting project")
     }
   }
