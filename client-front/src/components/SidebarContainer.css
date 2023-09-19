@@ -1,0 +1,109 @@
+.dashboard7 {
+  position: absolute;
+  top: 14px;
+  left: 77px;
+  font-weight: 600;
+}
+.ridashboard-fill-icon2 {
+  position: absolute;
+  top: 13px;
+  left: 30px;
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+}
+.dashboard6 {
+  text-decoration: none;
+  position: relative;
+  border-radius: var(--br-6xs);
+  background-color: var(--color-white);
+  width: 231px;
+  height: 50px;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+  color: inherit;
+}
+.material-symbolsnotifications-icon3 {
+  position: absolute;
+  top: 12px;
+  left: 28px;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+}
+.notifications7 {
+  position: absolute;
+  top: 15px;
+  left: 76px;
+  font-weight: 600;
+}
+.notifications6 {
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  border-radius: var(--br-6xs);
+  width: 231px;
+  height: 50px;
+  overflow: hidden;
+  flex-shrink: 0;
+  color: inherit;
+}
+.plans10 {
+  position: absolute;
+  top: 16px;
+  left: 77px;
+  font-weight: 600;
+}
+.mdibuilding-icon2 {
+  position: absolute;
+  top: 13px;
+  left: 30px;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+}
+.plans9 {
+  text-decoration: none;
+  position: relative;
+  border-radius: var(--br-6xs);
+  width: 231px;
+  height: 50px;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+  color: inherit;
+}
+.sidebarlinks1 {
+  position: absolute;
+  top: 342px;
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-6xs);
+}
+.logo-icon1 {
+  position: absolute;
+  top: 16px;
+  left: 93px;
+  width: 93.71px;
+  height: 106px;
+  object-fit: cover;
+}
+.sidebar1 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  /* background-color: var(--color-gray-100); */
+  border: 1px solid var(--color-mediumslateblue-600);
+  box-sizing: border-box;
+  width: 280px;
+  height: 1013px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}

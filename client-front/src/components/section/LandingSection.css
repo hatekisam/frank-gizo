@@ -1,0 +1,36 @@
+.--landing-section {
+  width: 100vw;
+  margin-bottom: 5em;
+}
+.--section-headline {
+  padding: 3em 0em 4em 6em;
+  font-size: 1.1em;
+  font-weight: bolder;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-self: flex-end;
+  width: 80%;
+  padding-left: 20%;
+}
+.--section-content{
+  display: flex;
+  flex: row;
+  justify-content: center;
+
+}
+.--section-name {
+  color: var(--color-mediumblue-100);
+}
+
+.reveal {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.reveal.active {
+  transform: translateY(0);
+  opacity: 1;
+}

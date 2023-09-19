@@ -1,0 +1,127 @@
+.image-10-icon {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 400.29px;
+  height: 450px;
+  object-fit: cover;
+}
+.serviceimage-child {
+  position: absolute;
+  top: 0px;
+  left: 0.5px;
+  background-color: var(--color-mediumblue-500);
+  width: 399px;
+  height: 450px;
+}
+.serviceimage {
+  position: relative;
+  width: 50%;
+  height: 450px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.div32 {
+  position: relative;
+  font-weight: 600;
+}
+.topography1 {
+  position: relative;
+  font-size: 20px;
+  display: inline-block;
+  color: var(--color-black);
+  width: 100%;
+  height: 20% ;
+  flex-shrink: 0;
+}
+.topography-is-the {
+  margin: 0;
+}
+.topography-is-the-container {
+  align-self: stretch;
+  position: relative;
+  font-size: var(--font-size-sm);
+  line-height: 21px;
+  color: var(--color-gray-200);
+}
+.bid-now1 {
+  position: relative;
+  font-size: var(--font-size-smi);
+  font-weight: 600;
+  font-family: var(--font-inter);
+  color: var(--color-white);
+  text-align: left;
+}
+.button7 {
+  cursor: pointer;
+  border: none;
+  padding: var(--padding-3xs) var(--padding-4xl);
+  background-color: var(--color-mediumslateblue-100);
+  border-radius: var(--br-11xs);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.button7:hover {
+  cursor: grab;
+}
+.servicedesciption {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-mediumblue-500);
+  box-sizing: border-box;
+  width: 50%;
+  
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-41xl) var(--padding-23xl) var(--padding-41xl)
+    var(--padding-47xl);
+  align-items: flex-start;
+  justify-content: space-around;
+  /* gap: var(--gap-10xl); */
+}
+.servicecard {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-mediumslateblue-100);
+  font-family: var(--font-inter);
+  width: 50vw;
+}
+
+@media screen and (max-width: 960px) {
+  .servicecard {
+    width: 200vw;
+    height: 90vh;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 420px) {
+  .serviceimage {
+   width: 100%;
+    
+  }
+
+  .servicedesciption {
+    width: 100%;
+    height: 60%;
+    /* align-items: center; */
+    justify-content: space-between;
+ 
+    box-sizing: border-box;
+  }
+
+  .servicecard {
+    align-self: stretch;
+    width: 80vw;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}

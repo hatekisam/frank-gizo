@@ -1,0 +1,81 @@
+.plancard-child3 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 400px;
+  height: 248px;
+  object-fit: cover;
+}
+.frame-child3 {
+  position: absolute;
+  top: 265.5px;
+  left: -1px;
+  border-top: 2px solid var(--color-mediumblue-500);
+  box-sizing: border-box;
+  width: 402px;
+  height: 2px;
+}
+.building-plan-2 {
+  position: absolute;
+  top: 283px;
+  left: 0px;
+  font-weight: 600;
+}
+.div11 {
+  position: absolute;
+  top: 312px;
+  left: 0px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-gray-200);
+}
+.image-13-icon {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 400px;
+  height: 266.67px;
+  object-fit: cover;
+}
+.line-parent {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 400px;
+  height: 345px;
+  overflow: hidden;
+}
+.building-plan-15 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-weight: 600;
+}
+.div12 {
+  position: absolute;
+  top: 29px;
+  left: 0px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-gray-200);
+}
+.plandescription3 {
+  position: absolute;
+  top: 283px;
+  left: 0px;
+  width: 105px;
+  height: 44px;
+}
+.plancard3 {
+  position: absolute;
+  top: 550px;
+  left: 855px;
+  width: 400px;
+  height: 345px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  font-size: var(--font-size-mini);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}

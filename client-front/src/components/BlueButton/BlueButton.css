@@ -1,0 +1,26 @@
+.--main-blue-button {
+  background-color: var(--color-mediumslateblue-100);
+  padding:1em 2em;
+  width: 12vw;
+  height: auto;
+
+  color: var(--color-white);
+  border-radius: 0.2em;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.--main-blue-button:hover {
+  background-color: var(--color-mediumblue-100);
+   transition: .5s;
+}
+
+@media screen and (max-width: 960px) {
+  .--main-blue-button {
+    width: 40vw;
+    padding: 1em;
+    background-color: var(--color-mediumslateblue-100);
+  }
+}

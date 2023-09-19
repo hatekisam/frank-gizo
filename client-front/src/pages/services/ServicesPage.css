@@ -1,0 +1,35 @@
+.servicescontent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-41xl) 0px;
+  align-items: center;
+  justify-content: center;
+  gap: 72px;
+}
+.servicespage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5em;
+}
+
+@media screen and (max-width: 960px) {
+  .servicescontent {
+    align-self: stretch;
+    width: auto;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 420px) {
+  .servicescontent {
+    padding-left: 10vw;
+  }
+
+  .servicespage {
+    margin: 0;
+  }
+}

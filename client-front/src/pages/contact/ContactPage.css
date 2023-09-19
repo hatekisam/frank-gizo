@@ -1,0 +1,42 @@
+
+.contactcontent {
+  align-self: stretch;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  
+  
+}
+.contact-inner{
+  width: 90% ;
+  
+}
+.contact-text{
+  display: block;
+  font-family: var(--font-inter);
+  color: rgb(70, 70, 70);
+
+  margin-bottom: 1em;
+}
+.contactpage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+@media screen and (max-width: 1200px) {
+ 
+  .contactcontent {
+    align-self: stretch;
+    width: auto;
+  }
+}
+
+

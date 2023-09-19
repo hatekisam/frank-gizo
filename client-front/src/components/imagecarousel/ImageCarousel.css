@@ -1,0 +1,43 @@
+
+
+.carousel-wrapper {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.carousel-button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.carousel-button.active {
+  background-color: #007bff; /* Active button color */
+}
+
+.prev-button,
+.next-button {
+  margin-top: 10px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background-color: #0056b3; /* Hover color */
+}

@@ -1,0 +1,221 @@
+.logo-icon2 {
+  position: relative;
+  width: 60px;
+  height: 68px;
+  object-fit: cover;
+  cursor: pointer;
+}
+.home {
+  text-decoration: none;
+  position: relative;
+  font-weight: 500;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  width: 59px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.about-us {
+  text-decoration: none;
+  position: relative;
+  font-weight: 500;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  width: 76px;
+  height: 23px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.our-services1 {
+  text-decoration: none;
+  position: relative;
+  font-weight: 500;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  width: 126px;
+  height: 23px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.location1 {
+  text-decoration: none;
+  position: relative;
+  font-weight: 500;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  width: 74px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.contact-us1 {
+  text-decoration: none;
+  position: relative;
+  font-weight: 500;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  width: 119px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.get-started {
+  position: relative;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  font-family: var(--font-inter);
+  color: var(--color-white);
+  text-align: left;
+}
+.button6 {
+  cursor: pointer;
+  border: none;
+  padding: var(--padding-smi) var(--padding-19xl);
+  background-color: var(--color-mediumslateblue-100);
+  border-radius: var(--br-11xs);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.button6:hover {
+  background-color: var(--color-mediumslateblue-400);
+  cursor: grab;
+}
+.links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-17xl);
+  
+}
+.links a {
+  text-decoration: none;
+  color: var(--color-darkslategray);
+  font-weight: 400;
+display: flex;
+align-items: center;
+}
+.links a.active {
+  text-decoration: none;
+   color: var(--color-mediumblue-100);
+ 
+  font-weight: 900;
+}
+.links a:hover {
+ color: var(--color-mediumblue-400);
+}
+.hamburgermenu-icon {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0%;
+  right: 0%;
+  bottom: 0%;
+  left: 0%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.hamburgermenu {
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  position: relative;
+  width: 55px;
+  height: 20px;
+  display: none;
+}
+.menulinks {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-17xl);
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+}
+.navigationbar {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  text-align: left;
+  font-size: var(--font-size-mini);
+  color: var(--color-darkslategray);
+  font-family: var(--font-inter);
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--color-white);
+  top: 0;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scrolled {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+@media screen and (max-width: 960px) {
+  .navigationbar {
+    background-color: white;
+  }
+
+  .nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hamburgermenu {
+    display: flex;
+    align-items: center;
+  }
+
+  .links {
+    display: none; 
+    transition: display 0.3s ease;
+  }
+
+ .nav.active {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  top: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transition: height 0.3s ease; 
+}
+
+.links.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 50vh; 
+  width: 50vw;
+  margin: 4vh 3vw;
+  transition: height 0.3s ease, margin 0.3s ease; 
+}
+
+  .hamburgermenu.active {
+ position: absolute;
+  top: 4vh;
+  right: 5vw;
+  z-index: 1000;
+  transition: top 0.3s ease, right 0.3s ease, opacity 0.3s ease; 
+  opacity: 1; 
+}
+}

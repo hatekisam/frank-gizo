@@ -1,0 +1,26 @@
+    /* CSS */
+    .round-button {
+        width: 50px;
+        height: 50px;
+        background-color: #0074D9;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        bottom: 50px; 
+        right: 50px; 
+        z-index: 500; 
+        cursor: pointer;
+        border: none;
+        font-size: 1.3em;
+    }
+
+    .icon {
+        font-size: 20px;
+    }

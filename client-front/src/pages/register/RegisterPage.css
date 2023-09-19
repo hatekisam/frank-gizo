@@ -1,0 +1,40 @@
+.authimage-icon1 {
+  position: relative;
+  width: 676.5px;
+  height: 379px;
+  object-fit: cover;
+}
+.authcontent1 {
+  align-self: stretch;
+  height: 800px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-24xl);
+  box-sizing: border-box;
+}
+.registerpage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 1200px) {
+  .authimage-icon1 {
+    width: 500px;
+  }
+
+  .authcontent1 {
+    align-self: stretch;
+    width: auto;
+  }
+}
+@media screen and (max-width: 960px) {
+  .authimage-icon1 {
+    display: none;
+  }
+}

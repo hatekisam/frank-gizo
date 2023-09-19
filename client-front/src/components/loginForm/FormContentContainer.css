@@ -1,0 +1,196 @@
+.get-your-building {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  font-weight: 700;
+  font-family: inherit;
+}
+.heading1 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-3xs);
+  align-items: center;
+  justify-content: center;
+  color: var(--color-black);
+}
+.input6 {
+  border: 1px solid var(--color-mediumblue-500);
+  font-weight: 500;
+  font-family: var(--font-inter);
+  font-size: var(--font-size-smi);
+  background-color: transparent;
+  align-self: stretch;
+  border-radius: var(--br-6xs);
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-sm) var(--padding-9xl);
+  align-items: center;
+  justify-content: flex-start;
+}
+.input7 {
+  border: 1px solid var(--color-mediumblue-500);
+  font-weight: 500;
+  font-family: var(--font-inter);
+  font-size: var(--font-size-smi);
+  background-color: transparent;
+  align-self: stretch;
+  border-radius: var(--br-6xs);
+  box-sizing: border-box;
+  height: 46px;
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-smi) var(--padding-6xl);
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.forminputs {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-8xl) 0px 0px;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-mid);
+}
+.material-symbolscheck-box {
+  cursor: pointer;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.keep-me-signed {
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+  width: 302px;
+  flex-shrink: 0;
+}
+.verify {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-smi);
+  font-size: var(--font-size-smi);
+}
+.login1 {
+  position: relative;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  font-family: var(--font-inter);
+  color: var(--color-white);
+  text-align: left;
+}
+.button8 {
+  cursor: pointer;
+  border: none;
+  padding: var(--padding-mid) var(--padding-112xl);
+  background-color: var(--color-mediumslateblue-100);
+  align-self: stretch;
+  border-radius: var(--br-6xs);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.button8:hover {
+  background-color: var(--color-mediumslateblue-300);
+  cursor: grab;
+}
+.dont-have-an {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.register {
+  text-decoration: none;
+  position: absolute;
+  top: 0px;
+  left: 156px;
+  color: var(--color-cornflowerblue);
+  cursor: pointer;
+}
+.register:hover {
+  color: var(--color-darkslateblue);
+}
+.dont-have-an-account-parent {
+  position: absolute;
+  top: 0px;
+  left: 81.5px;
+  width: 203px;
+  height: 15px;
+}
+.acknowledge {
+  position: relative;
+  width: 351px;
+  height: 15px;
+  font-size: var(--font-size-xs);
+}
+.formcontent1 {
+  align-self: stretch;
+  width: 650px;
+  display: flex;
+  flex-direction: column;
+  padding: 0px var(--padding-101xl);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-mid);
+  text-align: left;
+  font-size: var(--font-size-6xl);
+  color: var(--color-gray-200);
+  font-family: var(--font-inter);
+}
+
+@media screen and (max-width: 1200px) {
+  .formcontent1 {
+    width: 600px;
+    padding-left: var(--padding-31xl);
+    padding-right: var(--padding-31xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 960px) {
+  .forminputs {
+    align-self: stretch;
+    width: auto;
+  }
+
+  .formcontent1 {
+    width: 600px;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5vw;
+    padding-right: 10vw;
+    box-sizing: border-box;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 420px) {
+  .keep-me-signed {
+    font-size: var(--font-size-3xs);
+  }
+
+  .verify {
+    width: 250px;
+    padding-left: var(--padding-xl);
+    box-sizing: border-box;
+    max-width: 250px;
+  }
+
+  .formcontent1 {
+    width: 330px;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    box-sizing: border-box;
+    max-width: 330px;
+    margin: 0 auto;
+  }
+}

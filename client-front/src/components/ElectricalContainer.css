@@ -1,0 +1,205 @@
+.image-6-icon {
+  position: absolute;
+  top: 0px;
+  left: 1px;
+  width: 500px;
+  height: 334px;
+  object-fit: cover;
+}
+.group-child1 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: var(--color-mediumblue-500);
+  width: 501px;
+  height: 334px;
+}
+.image-6-parent {
+  position: relative;
+  width: 501px;
+  height: 334px;
+}
+.vector-icon4 {
+  position: absolute;
+  height: 53.72%;
+  width: 15.74%;
+  top: 36.85%;
+  right: 0%;
+  bottom: 9.43%;
+  left: 84.26%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.know-more1 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  font-family: var(--font-inter);
+  color: var(--color-white);
+  text-align: left;
+}
+.vector-parent1 {
+  position: relative;
+  width: 105.63px;
+  height: 17px;
+}
+.button2 {
+  cursor: pointer;
+  border: none;
+  padding: var(--padding-smi) var(--padding-5xl);
+  background-color: var(--color-mediumslateblue-100);
+  position: absolute;
+  top: 251px;
+  left: 71px;
+  border-radius: var(--br-10xs);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.button2:hover {
+  background-color: var(--color-mediumslateblue-300);
+  cursor: grab;
+}
+.plumbing-and-electrical {
+  position: absolute;
+  top: 0px;
+  left: 71px;
+  display: inline-block;
+  width: 320px;
+  height: 23px;
+}
+.vector-icon5 {
+  position: absolute;
+  height: 82.36%;
+  width: 4.52%;
+  top: 16.82%;
+  right: 95.48%;
+  bottom: 0.82%;
+  left: 0%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.plumbing-and-electrical-works-parent {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 391px;
+  height: 23px;
+  font-size: var(--font-size-lg);
+  color: var(--color-mediumblue-100);
+}
+.water {
+  position: absolute;
+  top: 1.07px;
+  left: 47px;
+  display: inline-block;
+  width: 53px;
+  height: 24px;
+}
+.vector-icon6 {
+  position: absolute;
+  height: 48.76%;
+  width: 22.43%;
+  top: 0%;
+  right: 77.57%;
+  bottom: 51.24%;
+  left: 0%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.water-parent {
+  position: absolute;
+  top: 110.93px;
+  left: 71px;
+  width: 100px;
+  height: 25.07px;
+}
+.electricity {
+  position: absolute;
+  top: 0px;
+  left: 47px;
+  display: inline-block;
+  width: 73px;
+  height: 24px;
+}
+.vector-icon7 {
+  position: absolute;
+  height: 50.93%;
+  width: 18.69%;
+  top: 30.96%;
+  right: 81.31%;
+  bottom: 18.11%;
+  left: 0%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.electricity-parent {
+  position: absolute;
+  top: 160px;
+  left: 71px;
+  width: 120px;
+  height: 24px;
+}
+.button-parent {
+  flex: 1;
+  position: relative;
+  height: 294px;
+}
+.group-parent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-137xl);
+  text-align: left;
+  font-size: var(--font-size-mini);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
+
+@media screen and (max-width: 960px) {
+  .button-parent {
+    flex: unset;
+    align-self: stretch;
+  }
+
+  .group-parent {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 420px) {
+  .image-6-icon {
+    width: 300px;
+    max-width: 300px;
+  }
+
+  .group-child1 {
+    width: 300px;
+    max-width: 300px;
+  }
+
+  .image-6-parent {
+    width: 300px;
+  }
+
+  .button-parent {
+    width: 70%;
+    max-width: 80%;
+    margin-left: -30vw;
+  }
+
+  .group-parent {
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+    max-width: 80%;
+  }
+}

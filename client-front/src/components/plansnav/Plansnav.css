@@ -1,0 +1,36 @@
+.plansnav {
+    width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+ margin-bottom: 5em;
+   font-family: var(--font-inter);
+
+}
+
+.nav-link {
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0 20px;
+}
+
+.nav-link:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.nav-link.active {
+  background-color: #007bff;
+  color: #fff;
+}
+@media screen and (max-width: 768px) {
+  .plansnav {
+   display: none;
+  }
+}

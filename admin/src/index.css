@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: Inter;
+  src: url("/font/Inter-VariableFont_slnt\,wght.ttf");
+}
+
+* {
+  font-family: Inter;
+}
+
+/* Track */
+::-webkit-scrollbar {
+  width: 3px;
+  /* Width of the scrollbar */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  /* Color of the scrollbar handle */
+  border-radius: 10px;
+  /* Radius of the scrollbar handle */
+}
+
+/* Track when hovering */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+  /* Color of the scrollbar handle on hover */
+}
