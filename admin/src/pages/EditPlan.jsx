@@ -46,20 +46,19 @@ const EditPlan = () => {
                 fetchProducts();
         }, []);
         const schema = yup.object().shape({
-                category: yup.string().required("Please select the category"),
-                name: yup.string().required("Please provide the plan name"),
-                stage: yup.string().required("Please select the stage of the plan"),
-                numberOfFloors: yup
-                        .number()
-                        .required("Please provide the number of Floors"),
-                planPrice: yup.string().required("Please provide the price of the plan"),
-                location: yup.string().required("Please provide the location of the plan"),
+                category: yup.string().optional(),
+                name: yup.string().optional(),
+                stage: yup.string().optional(),
+                numberOfFloors: yup.number()
+                        .optional(),
+                planPrice: yup.string().optional(),
+                location: yup.string().optional(),
                 description: yup
-                        .string()
-                        .required("Please provide the description of the plan"),
-                livingRooms: yup.number().notRequired(),
-                washRooms: yup.number().notRequired(),
-                bedRooms: yup.number().notRequired(),
+                        .string().nullable()
+                        .optional(),
+                livingRooms: yup.number().nullable().optional(),
+                washRooms: yup.number().nullable().optional(),
+                bedRooms: yup.number().nullable().optional(),
         });
         const {
                 register,
@@ -87,7 +86,8 @@ const EditPlan = () => {
                                                                 <input
                                                                         type="text"
                                                                         placeholder={project.name}
-                                                                        className="px-4 py-2 border-2 outline-none rounded-lg w-[50%]"
+                                                                        defaultValue={project.name}
+                                                                        className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%]"
                                                                         {...register("name")}
                                                                 />
                                                                 <p className="text-red-500">{errors.name?.message}</p>
@@ -95,9 +95,11 @@ const EditPlan = () => {
                                                         <div className="my-2">
                                                                 <p>Category of House Plan</p>
                                                                 <select
-                                                                        className="px-4 py-2 border-2 outline-none rounded-lg w-[50%] bg-white"
+                                                                        className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%] bg-white"
                                                                         {...register("category")}
-                                                                >
+                                                                ><option value={project.category._id} disabled selected>
+                                                                                {project.category.title}
+                                                                        </option>
                                                                         {categories?.map((category, i) => {
                                                                                 return (
                                                                                         <option key={i} value={category._id}>
@@ -112,40 +114,20 @@ const EditPlan = () => {
                                                                 <p>Number of Floors</p>
                                                                 <input
                                                                         type="number"
-                                                                        className="px-4 py-2 border-2 outline-none rounded-lg w-[50%]"
+                                                                        className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%]"
                                                                         {...register("numberOfFloors")}
+                                                                        defaultValue={project?.numberOfFloors}
+                                                                        placeholder={project.numberOfFloors}
                                                                 />
                                                                 <p className="text-red-500">{errors.numberOfFloors?.message}</p>
                                                         </div>
                                                         <div className="my-2">
-                                                                <p>Number of Rooms (Optional)</p>
-                                                                <div className="flex gap-2">
-                                                                        <input
-                                                                                type="number"
-                                                                                className="px-4 py-2 border-2 outline-none rounded-lg "
-                                                                                placeholder="Living Rooms"
-                                                                                {...register("livingRooms")}
-                                                                        />
-                                                                        <input
-                                                                                type="number"
-                                                                                className="px-4 py-2 border-2 outline-none rounded-lg "
-                                                                                placeholder="Wash Rooms"
-                                                                                {...register("washRooms")}
-                                                                        />
-                                                                        <input
-                                                                                type="number"
-                                                                                className="px-4 py-2 border-2 outline-none rounded-lg "
-                                                                                placeholder="BedRooms"
-                                                                                {...register("bedRooms")}
-                                                                        />
-                                                                </div>
-                                                        </div>
-                                                        <div className="my-2">
                                                                 <p>Plan Stage</p>
                                                                 <select
-                                                                        className="px-4 py-2 border-2 outline-none rounded-lg w-[50%] bg-white"
+                                                                        className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%] bg-white"
                                                                         {...register("stage")}
                                                                 >
+                                                                        <option value={project.stage === "DESIGN" ? "DESIGN" : project.stage === "COMPLETE" ? "COMPLETE" : "CONSTRUCTION"} disabled selected>{project.stage}</option>
                                                                         <option value={"DESIGN"}>Design</option>
                                                                         <option value={"CONSTRUCTION"}>Construction</option>
                                                                         <option value={"COMPLETE"}>Completed</option>
@@ -153,11 +135,40 @@ const EditPlan = () => {
                                                                 <p className="text-red-500">{errors.stage?.message}</p>
                                                         </div>
                                                         <div className="my-2">
+                                                                <p>Number of Rooms (Optional)</p>
+                                                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" >
+                                                                        <input
+                                                                                type="number"
+                                                                                className="px-4 py-2 border-2 outline-none rounded-lg "
+                                                                                placeholder={project.livingRooms ? project.livingRooms : "Living Rooms"}
+                                                                                defaultValue={project?.livingRooms}
+                                                                                {...register("livingRooms")}
+                                                                        />
+                                                                        <input
+                                                                                type="number"
+                                                                                className="px-4 py-2 border-2 outline-none rounded-lg "
+                                                                                placeholder={project.washRooms ? project.washRooms : "Wash Rooms"}
+                                                                                defaultValue={project?.washRooms}
+                                                                                {...register("washRooms")}
+                                                                        />
+                                                                        <input
+                                                                                type="number"
+                                                                                className="px-4 py-2 border-2 outline-none rounded-lg "
+                                                                                placeholder={project.bedRooms ? project.bedRooms : "Bed Rooms"}
+                                                                                defaultValue={project?.bedRooms}
+                                                                                {...register("bedRooms")}
+                                                                        />
+                                                                        <p>{errors?.livingRooms?.message}</p>
+                                                                </div>
+                                                        </div>
+                                                        <div className="my-2">
                                                                 <p>Price in (USD)</p>
                                                                 <input
                                                                         type="text"
-                                                                        className="px-4 py-2 border-2 outline-none rounded-lg w-[50%]"
+                                                                        className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%]"
                                                                         {...register("planPrice")}
+                                                                        placeholder={project.planPrice}
+                                                                        defaultValue={project.planPrice}
                                                                 />
                                                                 <p className="text-red-500">{errors.planPrice?.message}</p>
                                                         </div>
@@ -165,16 +176,20 @@ const EditPlan = () => {
                                                                 <p>Location</p>
                                                                 <input
                                                                         type="text"
-                                                                        className="px-4 py-2 border-2 outline-none rounded-lg w-[50%]"
+                                                                        className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%]"
                                                                         {...register("location")}
+                                                                        placeholder={project.location}
+                                                                        defaultValue={project.location}
                                                                 />
                                                                 <p className="text-red-500">{errors.location?.message}</p>
                                                         </div>
                                                         <div className="my-2">
                                                                 <p>Description</p>
                                                                 <textarea
-                                                                        className="px-4 py-2 border-2 outline-none rounded-lg w-[50%]"
+                                                                        className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%]"
                                                                         {...register("description")}
+                                                                        placeholder={project.description}
+                                                                        defaultValue={project?.description}
                                                                 ></textarea>
                                                                 <p className="text-red-500">{errors.description?.message}</p>
                                                         </div>
