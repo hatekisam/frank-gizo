@@ -249,13 +249,9 @@ exports.deleteProject = async (req, res) => {
 // #swagger.summary = 'Update Project'
 exports.updateProject = async (req, res) => {
 	try {
-		const { title, description, price } = req.body;
-
-		//validate req.body
-
-		//check if Project exists
-		let project = await Project.findById(req.params.id);
+		let project = await Project.findByIdAndUpdate(req.params.id, req.body);
 		if (!project) {
+			console.log("not project")
 			return res.status(404).json({
 				success: false,
 				status: 404,
@@ -263,35 +259,30 @@ exports.updateProject = async (req, res) => {
 			});
 		}
 
-		//updating project
-		const updateProject = await Project.findByIdAndUpdate(
-			req.params.id,
-			{
-				category: req.body.category,
-				numberOfFloors: req.body.numberOfFloors,
-				planPrice: req.body.planPrice,
-				stage: req.body.stage,
-				location: req.body.location,
-				livingRooms: req.body.livingRooms ? req.body.livingRooms : null,
-				bedRooms: req.body.bedRooms ? req.body.bedRooms : null,
-				washRooms: req.body.washRooms ? req.body.washRooms : null,
-				images: [...await uploadFile(req, res), ...project.images],
-			},
-			{
-				new: true,
-			}
-		);
-		res.status(200).json({
+
+		const moderators = await User.find({ role: "MODERATOR" });
+		const admin = await User.findOne({ role: "ADMIN" });
+		const currentUserId = req.body.creator;
+		const updatedRecipients = moderators.filter((moderator) => moderator._id.toString() !== currentUserId);
+
+		const notification = new Notification({
+			action: `${project.name} was updated successfully`,
+			doer: req.body.creator,
+			recipients: [admin._id, ...updatedRecipients.map((moderator) => moderator._id),]
+		})
+		await notification.save()
+
+		res.status(201).json({
 			success: true,
-			status: 200,
+			status: 201,
 			message: "Project updated successfully",
-			data: {
-				updateProject,
-			},
+			data: project,
 		});
 	} catch (error) {
-		console.log(error);
-		res.status(500).json({
+		console.error("Error creating project:", error);
+		return res.status(500).json({
+			success: false,
+			status: 500,
 			message: "Internal server error",
 		});
 	}

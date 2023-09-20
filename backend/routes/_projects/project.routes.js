@@ -68,8 +68,8 @@ router.delete("/:id"
 
 router.patch(
 	"/:id",
-	checkRole(["ADMIN", "MODERATOR"]),
-	upload.array("images", 5),
+	// checkRole(["ADMIN", "MODERATOR"]),
+	// upload.array("images", 5),
 	updateProject
 );
 

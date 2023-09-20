@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import TopBar from '../components/TopBar'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { ClipLoader } from 'react-spinners';
 import { toast } from 'react-hot-toast';
 import { fetchOneProject } from '../services/project.service';
@@ -16,6 +16,7 @@ const EditPlan = () => {
         const [loading, setLoading] = useState(true);
         const [categories, setCategories] = useState();
         const [project, setProject] = useState();
+        const [updatedProject, setUpdatedProject] = useState()
         useEffect(() => {
                 const fetchProducts = async () => {
                         try {
@@ -35,6 +36,7 @@ const EditPlan = () => {
                                                                 window.location.reload();
                                                         });
                                                 setProject(result);
+                                                setUpdatedProject(result)
                                                 setLoading(false);
                                         }
                                 }
@@ -45,31 +47,37 @@ const EditPlan = () => {
                 };
                 fetchProducts();
         }, []);
-        const schema = yup.object().shape({
-                category: yup.string().optional(),
-                name: yup.string().optional(),
-                stage: yup.string().optional(),
-                numberOfFloors: yup.number()
-                        .optional(),
-                planPrice: yup.string().optional(),
-                location: yup.string().optional(),
-                description: yup
-                        .string().nullable()
-                        .optional(),
-                livingRooms: yup.number().nullable().optional(),
-                washRooms: yup.number().nullable().optional(),
-                bedRooms: yup.number().nullable().optional(),
-        });
+        const navigate = useNavigate();
         const {
                 register,
                 handleSubmit,
-                formState: { errors },
-        } = useForm({
-                resolver: yupResolver(schema),
-        });
+        } = useForm();
         const onSubmit = (data) => {
-                console.log(data)
+                setLoading(true);
+                api.patch(`/projects/${project._id}`, updatedProject).then((res) => {
+                        setLoading(false)
+                        window.history.back();
+                        toast.success("Successfully updated project")
+                }).catch((err) => {
+                        console.log(err)
+                        setLoading(false)
+                        toast.error("Error updating project")
+                })
         }
+        const removeImage = (indexToRemove) => {
+                const updatedImages = project?.images.filter((img, index) => index !== indexToRemove);
+                setProject({ ...project, images: updatedImages });
+        };
+        const handleChange = (e) => {
+                const { name, value } = e.target;
+                setUpdatedProject({
+                        ...updatedProject,
+                        [name]: value,
+                });
+        };
+        const isProjectModified = () => {
+                return JSON.stringify(project) !== JSON.stringify(updatedProject);
+        };
         return (
                 <div className='w-full h-full px-4 pt-20 overflow-y-auto'>
                         <TopBar title="Edit" />
@@ -88,15 +96,15 @@ const EditPlan = () => {
                                                                         placeholder={project.name}
                                                                         defaultValue={project.name}
                                                                         className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%]"
-                                                                        {...register("name")}
+                                                                        {...register("name")} onChange={handleChange}
                                                                 />
-                                                                <p className="text-red-500">{errors.name?.message}</p>
                                                         </div>
                                                         <div className="my-2">
                                                                 <p>Category of House Plan</p>
                                                                 <select
                                                                         className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%] bg-white"
                                                                         {...register("category")}
+                                                                        onChange={handleChange}
                                                                 ><option value={project.category._id} disabled selected>
                                                                                 {project.category.title}
                                                                         </option>
@@ -108,7 +116,6 @@ const EditPlan = () => {
                                                                                 );
                                                                         })}
                                                                 </select>
-                                                                <p className="text-red-500">{errors.category?.message}</p>
                                                         </div>
                                                         <div className="my-2">
                                                                 <p>Number of Floors</p>
@@ -116,23 +123,23 @@ const EditPlan = () => {
                                                                         type="number"
                                                                         className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%]"
                                                                         {...register("numberOfFloors")}
+                                                                        onChange={handleChange}
                                                                         defaultValue={project?.numberOfFloors}
                                                                         placeholder={project.numberOfFloors}
                                                                 />
-                                                                <p className="text-red-500">{errors.numberOfFloors?.message}</p>
                                                         </div>
                                                         <div className="my-2">
                                                                 <p>Plan Stage</p>
                                                                 <select
                                                                         className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%] bg-white"
                                                                         {...register("stage")}
+                                                                        onChange={handleChange}
                                                                 >
                                                                         <option value={project.stage === "DESIGN" ? "DESIGN" : project.stage === "COMPLETE" ? "COMPLETE" : "CONSTRUCTION"} disabled selected>{project.stage}</option>
                                                                         <option value={"DESIGN"}>Design</option>
                                                                         <option value={"CONSTRUCTION"}>Construction</option>
                                                                         <option value={"COMPLETE"}>Completed</option>
                                                                 </select>
-                                                                <p className="text-red-500">{errors.stage?.message}</p>
                                                         </div>
                                                         <div className="my-2">
                                                                 <p>Number of Rooms (Optional)</p>
@@ -143,6 +150,7 @@ const EditPlan = () => {
                                                                                 placeholder={project.livingRooms ? project.livingRooms : "Living Rooms"}
                                                                                 defaultValue={project?.livingRooms}
                                                                                 {...register("livingRooms")}
+                                                                                onChange={handleChange}
                                                                         />
                                                                         <input
                                                                                 type="number"
@@ -150,6 +158,7 @@ const EditPlan = () => {
                                                                                 placeholder={project.washRooms ? project.washRooms : "Wash Rooms"}
                                                                                 defaultValue={project?.washRooms}
                                                                                 {...register("washRooms")}
+                                                                                onChange={handleChange}
                                                                         />
                                                                         <input
                                                                                 type="number"
@@ -157,8 +166,8 @@ const EditPlan = () => {
                                                                                 placeholder={project.bedRooms ? project.bedRooms : "Bed Rooms"}
                                                                                 defaultValue={project?.bedRooms}
                                                                                 {...register("bedRooms")}
+                                                                                onChange={handleChange}
                                                                         />
-                                                                        <p>{errors?.livingRooms?.message}</p>
                                                                 </div>
                                                         </div>
                                                         <div className="my-2">
@@ -167,10 +176,10 @@ const EditPlan = () => {
                                                                         type="text"
                                                                         className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%]"
                                                                         {...register("planPrice")}
+                                                                        onChange={handleChange}
                                                                         placeholder={project.planPrice}
                                                                         defaultValue={project.planPrice}
                                                                 />
-                                                                <p className="text-red-500">{errors.planPrice?.message}</p>
                                                         </div>
                                                         <div className="my-2">
                                                                 <p>Location</p>
@@ -178,20 +187,20 @@ const EditPlan = () => {
                                                                         type="text"
                                                                         className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%]"
                                                                         {...register("location")}
+                                                                        onChange={handleChange}
                                                                         placeholder={project.location}
                                                                         defaultValue={project.location}
                                                                 />
-                                                                <p className="text-red-500">{errors.location?.message}</p>
                                                         </div>
                                                         <div className="my-2">
                                                                 <p>Description</p>
                                                                 <textarea
                                                                         className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%]"
                                                                         {...register("description")}
+                                                                        onChange={handleChange}
                                                                         placeholder={project.description}
                                                                         defaultValue={project?.description}
                                                                 ></textarea>
-                                                                <p className="text-red-500">{errors.description?.message}</p>
                                                         </div>
                                                         <div>
                                                                 <p>Images</p>
@@ -201,7 +210,9 @@ const EditPlan = () => {
                                                                                 return (
                                                                                         <div key={index} className='relative p-4 rounded-md border-gray-700 border-2 h-[350px]'>
                                                                                                 <img src={img} alt="" className='w-full  h-full' />
-                                                                                                <button className="absolute -right-4 -bottom-2 bg-red-500 hover:bg-red-600 text-white p-3 rounded-full ">
+                                                                                                <button onClick={() => {
+                                                                                                        removeImage(index)
+                                                                                                }} className="absolute -right-4 -bottom-2 bg-red-500 hover:bg-red-600 text-white p-3 rounded-full ">
                                                                                                         <TrashIcon className="w-5 h-5" />
                                                                                                 </button>
                                                                                         </div>
@@ -252,7 +263,8 @@ const EditPlan = () => {
                                                                         <input
                                                                                 type="submit"
                                                                                 value={"Update"}
-                                                                                className="w-[50%] px-4 py-2  my-8 outline-none rounded-lg  bg-[#005DFF] text-white cursor-pointer"
+                                                                                disabled={!isProjectModified()}
+                                                                                className="w-[50%] px-4 py-2  my-8 outline-none rounded-lg  bg-[#005DFF] text-white cursor-pointer disabled:bg-blue-400"
                                                                         />
                                                                 )}
                                                         </div>
