@@ -173,7 +173,7 @@ const EditPlan = () => {
                                                         <div className="my-2">
                                                                 <p>Price in (USD)</p>
                                                                 <input
-                                                                        type="text"
+                                                                        type="number"
                                                                         className="px-4 py-2 border-2 outline-none rounded-lg w-full md:w-[50%]"
                                                                         {...register("planPrice")}
                                                                         onChange={handleChange}

@@ -109,7 +109,7 @@ const CreatePlan = () => {
 		numberOfFloors: yup
 			.number()
 			.required("Please provide the number of Floors"),
-		planPrice: yup.string().required("Please provide the price of the plan"),
+		planPrice: yup.number().required("Please provide the price of the plan"),
 		location: yup.string().required("Please provide the location of the plan"),
 		description: yup
 			.string()
@@ -256,7 +256,7 @@ const CreatePlan = () => {
 						<div className="my-2">
 							<p>Enter plan Price in (USD)</p>
 							<input
-								type="text"
+								type="number"
 								className="px-4 py-2 border-2 outline-none rounded-lg w-[50%]"
 								{...register("planPrice")}
 							/>

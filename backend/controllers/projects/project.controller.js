@@ -46,8 +46,6 @@ exports.createProject = async (req, res) => {
 				resource_type: "auto"
 			})
 		}
-
-
 		const newProject = new Project({
 			name: req.body.name,
 			category: req.body.category,

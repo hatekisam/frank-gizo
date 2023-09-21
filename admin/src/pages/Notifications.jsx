@@ -86,17 +86,17 @@ const Notifications = () => {
                           <div className="absolute w-2 h-2 rounded-full bg-[#555555] top-2 -left-[5px]"></div>
                           <p className="font-semibold text-sm my-2">
                             <span className="text-[#005DFFB0]">
-                              {notification.doer.fullName}
+                              {notification.doer?.fullName}
                             </span>{" "}
-                            {notification.action}
+                            {notification?.action}
                           </p>
                           <p className="text-xs">
-                            {new Date(notification.createdAt).getHours()}:
-                            {new Date(notification.createdAt).getMinutes() < 10
+                            {new Date(notification?.createdAt).getHours()}:
+                            {new Date(notification?.createdAt).getMinutes() < 10
                               ? `0${new Date(
-                                  notification.createdAt
+                                  notification?.createdAt
                                 ).getMinutes()}`
-                              : new Date(notification.createdAt).getMinutes()}
+                              : new Date(notification?.createdAt).getMinutes()}
                           </p>
                           {/* <p>{new Date(notification.createdAt).getT.toLocaleString()}</p> */}
                         </div>
@@ -131,9 +131,9 @@ const Notifications = () => {
                                 <div className="absolute w-2 h-2 rounded-full bg-[#555555] top-2 -left-[5px]"></div>
                                 <p className="font-semibold text-sm my-2">
                                   <span className="text-[#005DFFB0]">
-                                    {notification.doer.fullName}
+                                    {notification?.doer?.fullName}
                                   </span>{" "}
-                                  {notification.action}
+                                  {notification?.action}
                                 </p>
                                 <p className="text-xs">
                                   {notification?.createdAt?.getHours()}:
